@@ -1,49 +1,37 @@
 {
-  "name": "lms",
+  "name": "crm_admin",
   "version": "0.0.1",
-  "description": "LMS – Learning Management System. A system for automating educational and organizational processes in an educational institution. The automated control system (ACS) LMS is an information ecosystem of an educational organization.",
-  "productName": "LMS",
-  "author": "RAlekseev <roma99@bk.ru>",
+  "description": "A free and beautiful Quasar template for CRM.",
+  "productName": "CRM Admin",
+  "cordovaId": "org.cordova.quasar.app",
+  "capacitorId": "",
+  "author": "Mayank Patel",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
-    "axios": "^0.21.1",
-    "core-js": "^3.6.5",
-    "quasar": "^2.6.0",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0",
-    "vuex": "^4.0.1"
+    "apexcharts": "^3.24.0",
+    "echarts": "^4.6.0",
+    "node-sass": "^4.14.1",
+    "quasar": "^1.0.0",
+    "serialize-javascript": "^5.0.1",
+    "vue-apexcharts": "^1.5.2",
+    "vue-echarts-v3": "^2.0.1",
+    "vuedraggable": "^2.23.2",
+    "yargs-parser": "^20.2.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.13.14",
-    "@quasar/app-webpack": "^3.0.0",
-    "eslint": "^8.10.0",
-    "eslint-config-standard": "^17.0.0-1",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-vue": "^8.5.0",
-    "eslint-webpack-plugin": "^3.1.1",
-    "workbox-webpack-plugin": "^6.5.3"
+    "@quasar/app": "^1.0.0",
+    "@quasar/quasar-app-extension-qcalendar": "^1.5.3"
   },
-  "browserslist": [
-    "last 10 Chrome versions",
-    "last 10 Firefox versions",
-    "last 4 Edge versions",
-    "last 7 Safari versions",
-    "last 8 Android versions",
-    "last 8 ChromeAndroid versions",
-    "last 8 FirefoxAndroid versions",
-    "last 10 iOS versions",
-    "last 5 Opera versions"
-  ],
   "engines": {
-    "node": ">= 12.22.1",
+    "node": ">= 10.18.1",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
-  }
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ]
 }
