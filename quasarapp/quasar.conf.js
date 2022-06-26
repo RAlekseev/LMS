@@ -1,6 +1,3 @@
-// Configuration for your app
-// https://quasar.dev/quasar-cli/quasar-conf-js
-
 module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
@@ -47,7 +44,7 @@ module.exports = function (ctx) {
       directives: [],
 
       // Quasar plugins
-      plugins: ['Notify', 'Loading']
+      plugins: ['Notify', 'Loading', 'AppFullscreen']
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -90,13 +87,13 @@ module.exports = function (ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'CRM Admin',
-        short_name: 'CRM Admin',
-        description: 'A free and beautiful Quasar template for CRM.',
+        name: 'LearnMS',
+        short_name: 'LearnMS',
+        description: 'Learning management system',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
-        theme_color: '#027be3',
+        theme_color: '#006432',
         icons: [
           {
             'src': 'statics/icons/icon-128x128.png',
@@ -159,7 +156,7 @@ module.exports = function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'crm_admin'
+        appId: 'learnms'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
