@@ -2,7 +2,7 @@
   <q-header
     reveal
     :class="$q.dark.isActive ? 'header_dark' : 'header_normal'"
-    :style="{height: show_sidebar ? 'auto' : 0, left: show_sidebar ? '260px' : 0}">
+    :style="{left: show_sidebar ? '260px' : 0}">
     <q-toolbar>
       <q-btn
         @click="$store.dispatch('sidebarShowToggle')"
@@ -11,9 +11,10 @@
         dense
         icon="menu"
         class="q-mr-sm"/>
-      <q-toolbar-title>
-        LMS
-      </q-toolbar-title>
+      <DesktopBreadCrumb></DesktopBreadCrumb>
+<!--      <q-toolbar-title>-->
+<!--        LMS-->
+<!--      </q-toolbar-title>-->
       <q-btn
         class="q-mr-xs"
         flat
@@ -21,7 +22,7 @@
         @click="$q.dark.toggle()"
         :icon="$q.dark.isActive ? 'nights_stay' : 'wb_sunny'"/>
       <q-btn
-        class="q-mr-xs"
+        class="q-mr-xs fullscreen-button"
         flat
         round
         @click="$q.fullscreen.toggle()"
@@ -89,10 +90,13 @@
 
 <script>
   import {mapGetters} from "vuex";
-
+  import DesktopBreadCrumb from "../components/DesktopBreadCrumbs"
   export default {
     computed: {
       ...mapGetters(['show_sidebar'])
+    },
+    components: {
+      DesktopBreadCrumb
     },
     methods: {
       logoutNotify() {
@@ -114,5 +118,10 @@
   }
   .header_dark {
     background: linear-gradient(145deg, rgb(61, 14, 42) 15%, rgb(14, 43, 78) 70%);
+  }
+  @media screen and (max-width: 820px) {
+    .fullscreen-button {
+      display: none;
+    }
   }
 </style>
