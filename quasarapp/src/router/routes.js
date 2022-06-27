@@ -1,6 +1,7 @@
+import auth from '../modules/auth/routes'
 
 const routes = [
-  { path: '/', component: () => import('pages/login.vue') },
+  ...auth,
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),

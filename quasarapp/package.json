@@ -19,6 +19,7 @@
     "serialize-javascript": "^5.0.1",
     "vue-apexcharts": "^1.5.2",
     "vue-echarts-v3": "^2.0.1",
+    "vue-meta": "^2.4.0",
     "vuedraggable": "^2.23.2",
     "vuex-persistedstate": "^4.1.0",
     "yargs-parser": "^20.2.0"
