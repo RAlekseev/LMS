@@ -1,6 +1,6 @@
 <template>
-  <q-btn flat round dense class="q-mr-xs">
-    <q-img src="/statics/images/flags/ru.png" style="height: 20px; width: 30px"></q-img>
+  <q-btn flat dense class="q-mr-xs">
+    <q-img class="shadow-box shadow-22" src="/statics/images/flags/ru.png" style="height: 20px; width: 30px"></q-img>
     <q-menu style="height: 100% !important;">
       <q-list style="min-width: 100px;">
         <q-item clickable v-close-popup>

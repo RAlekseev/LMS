@@ -18,13 +18,13 @@
       <q-footer elevated>
         <q-toolbar>
           <q-toolbar>
-            <q-btn flat round dense class="q-mr-sm">
+            <q-btn flat dense class="q-mr-sm">
               ПОДДЕРЖКА 24/7 <i class="fas fa-phone" style="margin: 0 5px;"></i>
               <div class="phone">(+996 990 000 302)</div>
             </q-btn>
             <q-space></q-space>
             <SetLocaleBtn></SetLocaleBtn>
-            <q-btn flat round dense style="margin-left: 10px;">
+            <q-btn flat dense style="margin-left: 10px;">
               © 2022 with
               <i class="fas fa-heart" style="margin-left: 5px;"></i>
             </q-btn>
@@ -200,8 +200,16 @@
     color: white;
   }
 
+  .normal_auth .q-footer {
+    background: linear-gradient(
+      145deg,
+      rgb(32, 106, 80) 15%,
+      rgb(21, 57, 102) 70%
+    );
+  }
+
   .dark_auth .q-footer {
-    background-color: transparent;
+    background: linear-gradient(145deg, rgb(61, 14, 42) 15%, rgb(14, 43, 78) 70%);
   }
 
   @media screen and (max-width: 400px) {
