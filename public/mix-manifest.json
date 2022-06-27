@@ -2,6 +2,6 @@
     "/resources/views/app.blade.php": "/resources/views/app.blade.php",
     "/index.html": "/index.html",
     "/manifest.json": "/manifest.json",
-    "/precache-manifest.a9b83f51e7c154f39d534c1d99ac7f84.js": "/precache-manifest.a9b83f51e7c154f39d534c1d99ac7f84.js",
+    "/precache-manifest.047f209d205bed711894db301f00073f.js": "/precache-manifest.047f209d205bed711894db301f00073f.js",
     "/service-worker.js": "/service-worker.js"
 }

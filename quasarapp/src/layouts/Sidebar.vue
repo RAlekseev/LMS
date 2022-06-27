@@ -9,14 +9,16 @@
       class="full-height"
       :class="$q.dark.isActive ? 'drawer_dark' : 'drawer_normal'">
       <div style="height: calc(100% - 117px)">
-        <q-toolbar>
-          <q-avatar>
-            <img src="/statics/images/white_logo.png"/>
-          </q-avatar>
-          <q-toolbar-title class="sidebar_title">
-            LearnMS
-          </q-toolbar-title>
-        </q-toolbar>
+        <router-link to="/" style="color:white; text-decoration: none">
+          <q-toolbar>
+            <q-avatar>
+              <img src="/statics/images/white_logo.png"/>
+            </q-avatar>
+            <q-toolbar-title class="sidebar_title">
+              LearnMS
+            </q-toolbar-title>
+          </q-toolbar>
+        </router-link>
         <hr/>
         <q-scroll-area style="height:100%;">
           <q-list padding>
@@ -192,8 +194,7 @@
               active-class="tab-active"
               to="/my_profile"
               class="q-ma-sm navigation-item"
-              clickable
-              v-ripplev>
+              clickable>
               <q-item-section avatar>
                 <q-icon name="drafts"/>
               </q-item-section>

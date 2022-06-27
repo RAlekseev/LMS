@@ -2,7 +2,7 @@
   <q-header
     reveal
     :class="$q.dark.isActive ? 'header_dark' : 'header_normal'"
-    :style="{height: show_sidebar ? 'auto' : 0, left: show_sidebar ? '260px' : 0}">
+    :style="{left: show_sidebar ? '260px' : 0}">
     <q-toolbar>
       <q-btn
         @click="$store.dispatch('sidebarShowToggle')"
@@ -11,9 +11,7 @@
         dense
         icon="menu"
         class="q-mr-sm"/>
-      <q-toolbar-title>
-        LMS
-      </q-toolbar-title>
+      <DesktopBreadCrumb></DesktopBreadCrumb>
       <q-btn
         class="q-mr-xs"
         flat
@@ -21,27 +19,21 @@
         @click="$q.dark.toggle()"
         :icon="$q.dark.isActive ? 'nights_stay' : 'wb_sunny'"/>
       <q-btn
-        class="q-mr-xs"
+        class="q-mr-xs fullscreen-button"
         flat
         round
         @click="$q.fullscreen.toggle()"
         :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"></q-btn>
 
-      <q-btn flat round dense class="q-mr-xs">
-        <q-img src="/statics/images/flags/ru.png" style="height: 20px; width: 30px"></q-img>
-        <q-menu>
-          <q-list style="min-width: 100px">
-            <q-item clickable v-close-popup>
-              <q-item-section><q-img src="/statics/images/flags/ru.png"></q-img></q-item-section>
-            </q-item>
-            <q-separator />
-            <q-item clickable v-close-popup>
-              <q-item-section><q-img src="/statics/images/flags/en.png"></q-img></q-item-section>
-            </q-item>
-          </q-list>
-        </q-menu>
-      </q-btn>
+      <SetLocaleBtn></SetLocaleBtn>
       <q-btn flat round dense icon="notifications" class="q-mr-xs">
+        <q-avatar
+          size="10px"
+          class="absolute"
+          style="background-color: var(--q-color-primary); font-size: 20px; right: 5px; top: 5px; width: 12px;
+    height: 12px;">
+          <b>2</b>
+        </q-avatar>
         <q-menu>
           <q-list>
             <q-item clickable v-close-popup>
@@ -89,10 +81,16 @@
 
 <script>
   import {mapGetters} from "vuex";
+  import DesktopBreadCrumb from "../components/DesktopBreadCrumbs"
+  import SetLocaleBtn from "../components/SetLocaleBtn"
 
   export default {
     computed: {
       ...mapGetters(['show_sidebar'])
+    },
+    components: {
+      DesktopBreadCrumb,
+      SetLocaleBtn,
     },
     methods: {
       logoutNotify() {
@@ -114,5 +112,10 @@
   }
   .header_dark {
     background: linear-gradient(145deg, rgb(61, 14, 42) 15%, rgb(14, 43, 78) 70%);
+  }
+  @media screen and (max-width: 820px) {
+    .fullscreen-button {
+      display: none;
+    }
   }
 </style>

@@ -216,10 +216,17 @@ methods: {
   background-position: 50% 50%;
 }
 .normal_gradient {
-  background: linear-gradient(145deg, rgb(74, 94, 137) 15%, #b61924 70%);
+  background-image: url("/statics/images/bg_light.png");
+  background-size: cover !important;
+  /*background: linear-gradient(145deg, rgb(74, 94, 137) 15%, #b61924 70%);*/
 }
 .dark_gradient {
-  background: linear-gradient(145deg, rgb(11, 26, 61) 15%, #4c1014 70%);
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.6)
+  ), url("/statics/images/bg_light.png");
+  background-size: cover !important;
+  /*background: linear-gradient(145deg, rgb(11, 26, 61) 15%, #4c1014 70%);*/
 }
 .login-form {
   position: absolute;

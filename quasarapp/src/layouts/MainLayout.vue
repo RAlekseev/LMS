@@ -8,6 +8,7 @@
         <div class="col">
           <div class="full-height">
             <q-scroll-area class="col q-pr-sm full-height" visible>
+              <MobileBreadCrumbs></MobileBreadCrumbs>
               <router-view/>
             </q-scroll-area>
           </div>
@@ -21,11 +22,13 @@
   import Header from './Header'
   import Sidebar from './Sidebar'
   import {mapGetters} from "vuex";
+  import MobileBreadCrumbs from '../components/MobileBreadCrumbs'
 
   export default {
     components: {
       Header,
       Sidebar,
+      MobileBreadCrumbs,
     },
     computed: {
       ...mapGetters(['show_sidebar'])
@@ -44,5 +47,8 @@
   }
   .body--dark {
     background: #2e2e2e !important;
+  }
+  .q-drawer__backdrop {
+    z-index: 1 !important;
   }
 </style>
