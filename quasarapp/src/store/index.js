@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from "vuex-persistedstate"
+import auth from '../modules/auth/store';
 
 Vue.use(Vuex);
 
@@ -30,6 +31,9 @@ export default function (/* { store, ssrContext } */) {
     getters: {
       show_sidebar: state => state.show_sidebar,
       is_active_header_breadcrumbs: state => state.is_active_header_breadcrumbs,
+    },
+    modules: {
+      auth,
     },
     plugins: [createPersistedState]
   });

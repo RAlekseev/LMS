@@ -45,32 +45,44 @@
       </q-btn>
 
       <q-avatar>
-        <img src="/statics/images/profile.png" />
+        <img src="/statics/images/profile.jpeg" />
         <q-menu>
           <div class="row no-wrap q-pa-md">
-            <div class="column">
-              <div class="text-h6 q-mb-md">Settings</div>
-              <q-toggle label="Use Mobile Data" />
-              <q-toggle label="Bluetooth" />
-            </div>
+<!--            <div class="column">-->
+<!--              <div class="text-h6 q-mb-md">Settings</div>-->
+<!--              <q-toggle label="Use Mobile Data" />-->
+<!--              <q-toggle label="Bluetooth" />-->
+<!--            </div>-->
 
-            <q-separator vertical inset class="q-mx-lg" />
+<!--            <q-separator vertical inset class="q-mx-lg" />-->
 
             <div class="column items-center">
               <q-avatar size="72px">
-                <img src="/statics/images/profile.png">
+                <img src="/statics/images/profile.jpeg">
               </q-avatar>
 
-              <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
+              <div class="text-subtitle1 q-mt-md q-mb-xs">{{ authUser.name }}</div>
 
+              <div class="row">
+                <q-btn
+                  icon="person"
+                  color="info"
+                  label=""
+                  push
+                  size="sm"
+                  v-close-popup
+                  to="/home"
+                  style="margin-right: 20px"
+                />
               <q-btn
+                icon="exit_to_app"
                 color="primary"
-                label="Logout"
+                label=""
                 push
                 size="sm"
-                @click="logoutNotify"
-                to="/"
+                @click="$store.dispatch('logout')"
                 v-close-popup/>
+              </div>
             </div>
           </div>
         </q-menu>
@@ -86,7 +98,10 @@
 
   export default {
     computed: {
-      ...mapGetters(['show_sidebar'])
+      ...mapGetters([
+        'show_sidebar',
+        'authUser',
+      ])
     },
     components: {
       DesktopBreadCrumb,

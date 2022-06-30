@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMeta from 'vue-meta';
-
 import routes from './routes'
 
 Vue.use(VueMeta);
@@ -27,6 +26,24 @@ export default function (/* { store, ssrContext } */) {
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
   })
+
+  Router.beforeEach((to, from, next) => {
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    if (to.matched.some(record => record.meta.requiresAuth) && !user) {
+      next({
+        path: '/login',
+        query: {redirect: to.fullPath}
+      });
+    } else {
+      //Permission check
+      if (to.meta.permission && !user.permissions.includes(to.meta.permission)) {
+        next('/not_found');
+      } else {
+        next();
+      }
+    }
+  });
 
   return Router
 }
