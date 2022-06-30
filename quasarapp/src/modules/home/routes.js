@@ -1,6 +1,7 @@
 export default [
   {
     path: '/home',
-    component: () => import('../../pages/dashboard.vue'),
+    component: () => import('./components/Index'),
+    meta: {breadcrumbs: [{label: 'Главная'}]},
   },
 ]

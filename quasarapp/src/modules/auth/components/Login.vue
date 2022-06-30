@@ -18,9 +18,11 @@
     <q-card-section>
       <q-form class="q-gutter-md" @keyup.enter="sendForm">
 
-        <q-input filled v-model="form.login" label="Login" lazy-rules/>
+        <q-input :label-color="$q.dark.isActive ? 'white' : 'primary'"
+                 filled v-model="form.login" label="Login" lazy-rules/>
 
         <q-input
+          :label-color="$q.dark.isActive ? 'white' : 'primary'"
           type="password"
           filled
           v-model="form.password"
@@ -46,40 +48,46 @@
 </template>
 
 <script>
-  export default {
-    name: 'Login',
-    metaInfo: {
-      title: 'Авторизация'
-    },
-    data() {
-      return {
-        form: {
-          login: null,
-          password: null,
-          stay: false,
-        }
-      }
-    },
-    methods: {
-      sendForm() {
-        this.$store.dispatch('login', this.form)
-          .then(() => {this.$router.push(this.$router.currentRoute.query?.redirect || '/');});
+export default {
+  name: 'Login',
+  metaInfo: {
+    title: 'Авторизация'
+  },
+  data() {
+    return {
+      form: {
+        login: null,
+        password: null,
+        stay: false,
       }
     }
+  },
+  methods: {
+    sendForm() {
+      this.$store.dispatch('login', this.form)
+        .then(() => {
+          this.$router.push(this.$router.currentRoute.query?.redirect || '/');
+        });
+    }
   }
+}
 </script>
 
 <style scoped>
-  @media screen and (min-width: 600px) {
-    div.col.text-h6 {
-      text-align: center;
-    }
+@media screen and (min-width: 600px) {
+  div.col.text-h6 {
+    text-align: center;
   }
+}
 
-  .forgot {
-    margin: auto 0 auto auto;
-    text-decoration: none;
-    font-weight: bold;
-  }
+.forgot {
+  margin: auto 0 auto auto;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.q-field__label {
+  color: var(--q-color-accent) !important;
+}
 </style>
 

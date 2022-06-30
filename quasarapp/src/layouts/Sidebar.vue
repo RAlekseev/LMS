@@ -24,6 +24,21 @@
           <q-list padding>
             <q-item
               active-class="tab-active"
+              to="/home"
+              exact
+              class="q-ma-sm navigation-item"
+              clickable
+              v-ripple>
+              <q-item-section avatar>
+                <q-icon name="dashboard"/>
+              </q-item-section>
+
+              <q-item-section>
+                Главная
+              </q-item-section>
+            </q-item>
+            <q-item
+              active-class="tab-active"
               to="/dashboard"
               exact
               class="q-ma-sm navigation-item"
@@ -34,7 +49,7 @@
               </q-item-section>
 
               <q-item-section>
-                Dashboard v1
+                Панель управления
               </q-item-section>
             </q-item>
 
@@ -219,7 +234,14 @@
         'show_sidebar',
         'can',
       ]),
-      left: () => !!this.show_sidebar
+      // is_active: {
+      //   get(){
+      //     return this.show_sidebar
+      //   },
+      //   set(new_show_sidebar){
+      //     return new_show_sidebar
+      //   }
+      // },
     },
   }
 </script>

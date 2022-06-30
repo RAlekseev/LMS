@@ -3,7 +3,6 @@ import store from '../store'
 export default ({ /* app, router, Vue, ... */ }) => {
   const userInfo = localStorage.getItem('user');
   if (userInfo) {
-    console.log(store());
     store().commit('setUserData', JSON.parse(userInfo));
   }
   axios.interceptors.response.use(

@@ -2,7 +2,7 @@
   <div class="mobile-breadcrumbs" :class="$q.dark.isActive ? 'breadcrumbs_dark' : 'breadcrumbs_normal'">
   <q-toolbar inset v-if="!is_active_header_breadcrumbs" class="">
     <q-breadcrumbs active-color="white">
-      <template v-for="breadcrumb in breadcrumbs">
+      <template v-for="breadcrumb in $route.meta.breadcrumbs">
         <q-breadcrumbs-el :label="breadcrumb.label" :to="breadcrumb.to" :key="breadcrumb.label"/>
       </template>
     </q-breadcrumbs>
@@ -14,23 +14,6 @@
   import {mapGetters} from "vuex";
 
   export default {
-    data: () => ({
-      breadcrumbs: [
-        {
-          label: 'Главная',
-          to: '/'
-        },
-        {
-          label: 'Группы',
-        },
-        {
-          label: 'GMM 1-17s',
-        },
-        {
-          label: 'Результаты тестов',
-        },
-      ]
-    }),
     computed: {
       ...mapGetters(['is_active_header_breadcrumbs']),
     }

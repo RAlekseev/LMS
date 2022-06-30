@@ -8,12 +8,12 @@ Vue.use(Vuex);
 export default function (/* { store, ssrContext } */) {
   const Store = new Vuex.Store({
     state: {
-      show_sidebar: true,
+      show_sidebar: false,
       is_active_header_breadcrumbs: false,
     },
     mutations: {
       sidebarShowToggle(state) {
-        state.show_sidebar = ! state.show_sidebar;
+        state.show_sidebar = !state.show_sidebar;
       },
       IsActiveHeaderBreadcrumbsToggle(state) {
         state.is_active_header_breadcrumbs = !state.is_active_header_breadcrumbs
@@ -21,7 +21,6 @@ export default function (/* { store, ssrContext } */) {
     },
     actions: {
       sidebarShowToggle({commit}) {
-        window.dispatchEvent(new Event('resize'));
         commit('sidebarShowToggle')
       },
       IsActiveHeaderBreadcrumbsToggle({commit}) {
