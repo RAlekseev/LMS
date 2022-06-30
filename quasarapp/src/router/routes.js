@@ -1,12 +1,31 @@
 import auth from '../modules/auth/routes'
+import home from '../modules/home/routes'
+import dashboard from '../modules/dashboard/routes'
 
 const routes = [
+  {
+    path: '/',
+    beforeEnter(to, from, next) {
+      let user = JSON.parse(localStorage.getItem('user'))?.user;
+      if (user) {
+        if (user.permissions.filter(x => ['super_admin', 'dashboard'].includes(x)).length) {
+          next('/dashboard');
+        } else {
+          next('/home');
+        }
+      } else {
+        next('/login');
+      }
+    }
+  },
   ...auth,
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
+    meta: { requiresAuth: true },
     children: [
-      { path: '/dashboard', component: () => import('pages/dashboard.vue') },
+      ...home,
+      ...dashboard,
       { path: '/dashboard_v2', component: () => import('pages/dashboard_v2.vue') },
       { path: '/dashboard_v3', component: () => import('pages/dashboard_v3.vue') },
       { path: '/customer_management', component: () => import('pages/customer_management.vue') },

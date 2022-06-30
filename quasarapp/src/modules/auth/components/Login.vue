@@ -16,9 +16,9 @@
       </div>
     </q-card-section>
     <q-card-section>
-      <q-form class="q-gutter-md">
+      <q-form class="q-gutter-md" @keyup.enter="sendForm">
 
-        <q-input filled v-model="form.username" label="Login" lazy-rules/>
+        <q-input filled v-model="form.login" label="Login" lazy-rules/>
 
         <q-input
           type="password"
@@ -54,7 +54,7 @@
     data() {
       return {
         form: {
-          email: null,
+          login: null,
           password: null,
           stay: false,
         }
@@ -62,11 +62,9 @@
     },
     methods: {
       sendForm() {
-        this.$q.notify({
-          message: 'Login Successful',
-        });
-        // this.$store.dispatch('login', this.form);
-      },
+        this.$store.dispatch('login', this.form)
+          .then(() => {this.$router.push(this.$router.currentRoute.query?.redirect || '/');});
+      }
     }
   }
 </script>

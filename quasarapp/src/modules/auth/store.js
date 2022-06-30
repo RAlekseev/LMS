@@ -1,50 +1,53 @@
+import { Notify } from 'quasar'
+
+import axios from 'axios'
 export default {
-    state: {
-        user: null,
+  state: {
+    user: null,
+  },
+
+  mutations: {
+    setUserData(state, userData) {
+      state.user = userData.user;
+      localStorage.setItem('user', JSON.stringify(userData));
+      axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`
     },
 
-    mutations: {
-        setUserData(state, userData) {
-            state.user = userData;
-            localStorage.setItem('user', JSON.stringify(userData));
-            axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`
-        },
-
-        clearUserData(state) {
-            state.user = null;
-            localStorage.removeItem('user');
-            location.reload()
-        },
+    clearUserData(state) {
+      state.user = null;
+      localStorage.removeItem('user');
+      location.reload()
     },
+  },
 
-    actions: {
-        login({commit}, credentials) {
-            let redirect_to = router.currentRoute.query?.redirect || '/';
-            return axios
-                .post('/api/login', credentials)
-                .then(({data}) => {
-                    commit('setUserData', data)
-                    router.push({path: redirect_to})
-                })
-                .catch(error => {
-                    commit('addError', error.response.data.message || error.message)
-                });
-        },
-        logout({commit}) {
-            axios
-                .post(`/api/logout`)
-                .then(response => {
-                    commit('clearUserData')
-                })
-                .catch(error => {
-                    commit('addError', error.response.data.message || error.message)
-                });
-        }
+  actions: {
+    login({commit}, credentials) {
+      return axios
+        .post('http://localhost:8098/api/auth/login', credentials)
+        .then((data) => {
+          commit('setUserData', data.data)
+        })
+        .catch(error => {
+          Notify.create({
+            icon: 'warning',
+            color: 'negative',
+            message: error.response?.data.message || error.message,
+          })
+        });
     },
-
-    getters: {
-        isLogged: state => !!state.user,
-        authUser: state => state.user.user,
-        can: state => (...perms) => state.user.user && state.user.user.permissions.filter(x => perms.includes(x)).length,
+    logout({commit}) {
+      axios
+        .post(`http://localhost:8098/api/auth/logout`)
+        .catch(error => {
+          commit('addError', error.response.data.message || error.message)
+        });
+      commit('clearUserData')
     }
+  },
+
+  getters: {
+    isLogged: state => !!state.user,
+    authUser: state => state.user,
+    can: state => (...perms) => state.user && state.user.permissions.filter(x => perms.includes(x)).length,
+  }
 }

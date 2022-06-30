@@ -215,7 +215,10 @@
 
   export default {
     computed: {
-      ...mapGetters(['show_sidebar']),
+      ...mapGetters([
+        'show_sidebar',
+        'can',
+      ]),
       left: () => !!this.show_sidebar
     },
   }
